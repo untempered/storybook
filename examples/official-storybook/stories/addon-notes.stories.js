@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { docInfo } from '@storybook/addon-notes/docInfo';
 
 import BaseButton from '../components/BaseButton';
 import DocgenButton from '../components/DocgenButton';
@@ -52,7 +53,7 @@ const giphyMarkdown = `
 const propsMarkdown = `
 # Props
 
-<Props />
+<PropTable />
 `;
 
 storiesOf('Addons|Notes', module)
@@ -87,10 +88,14 @@ storiesOf('Addons|Notes', module)
 
 storiesOf('Addons|Docs', module)
   .addParameters({ notes: propsMarkdown })
-  .add('BaseButton', () => baseStory)
-  .add('DocgenButton', () => (
-    <DocgenButton label="Button with notes - check the notes panel for details" />
-  ))
-  .add('FlowTypeButton', () => (
-    <FlowTypeButton label="Button with notes - check the notes panel for details" />
-  ));
+  .add('BaseButton', baseStory, { component: docInfo(BaseButton) })
+  .add(
+    'DocgenButton',
+    () => <DocgenButton label="Button with notes - check the notes panel for details" />,
+    { component: docInfo(DocgenButton) }
+  )
+  .add(
+    'FlowTypeButton',
+    () => <FlowTypeButton label="Button with notes - check the notes panel for details" />,
+    { component: docInfo(FlowTypeButton) }
+  );

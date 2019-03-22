@@ -2,9 +2,21 @@ import React, { ReactElement, Component, Fragment, ReactNode } from 'react';
 import { types } from '@storybook/addons';
 import { API, Consumer, Combo } from '@storybook/api';
 import { styled } from '@storybook/theming';
+import { PropTable } from '@storybook/components';
 import { STORY_RENDERED } from '@storybook/core-events';
 
-const PropsTableWrapper = styled.div({
+import {
+  SyntaxHighlighter as SyntaxHighlighterBase,
+  Placeholder,
+  DocumentFormatting,
+  Link,
+} from '@storybook/components';
+import Markdown from 'markdown-to-jsx';
+import Giphy from './giphy';
+
+import { PARAM_KEY, Parameters } from './shared';
+
+const PropTableWrapper = styled.div({
   background: 'hotpink',
 });
 
@@ -19,29 +31,18 @@ interface In {
   api: API;
 }
 
-const PropsTable = ({ id }: { id?: string }) => (
+const PropTableConsumer = ({ id }: { id?: string }) => (
   <Consumer filter={propsMapper}>
     {({ currentId, api }: In) => {
-      const props = api.getParameters(id || currentId, 'props');
+      const component = api.getParameters(id || currentId, 'component');
       return (
-        <PropsTableWrapper>
-          <pre>{JSON.stringify(props, null, 2)}</pre>
-        </PropsTableWrapper>
+        <PropTableWrapper>
+          <PropTable type={PropTableWrapper} propDefinitions={component.propDefinitions} />
+        </PropTableWrapper>
       );
     }}
   </Consumer>
 );
-
-import {
-  SyntaxHighlighter as SyntaxHighlighterBase,
-  Placeholder,
-  DocumentFormatting,
-  Link,
-} from '@storybook/components';
-import Giphy from './giphy';
-import Markdown from 'markdown-to-jsx';
-
-import { PARAM_KEY, Parameters } from './shared';
 
 const Panel = styled.div({
   padding: '3rem 40px',
@@ -59,13 +60,17 @@ interface Props {
 function read(param: Parameters | undefined): string | undefined {
   if (!param) {
     return undefined;
-  } else if (typeof param === 'string') {
+  }
+  if (typeof param === 'string') {
     return param;
-  } else if ('disabled' in param) {
+  }
+  if ('disabled' in param) {
     return undefined;
-  } else if ('text' in param) {
+  }
+  if ('text' in param) {
     return param.text;
-  } else if ('markdown' in param) {
+  }
+  if ('markdown' in param) {
     return param.markdown;
   }
 }
@@ -97,8 +102,8 @@ const defaultOptions = {
     Giphy: {
       component: Giphy,
     },
-    Props: {
-      component: PropsTable,
+    PropTable: {
+      component: PropTableConsumer,
     },
   },
 };
