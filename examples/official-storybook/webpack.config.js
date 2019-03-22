@@ -9,16 +9,6 @@ module.exports = async ({ config }) => ({
       ...config.module.rules,
       {
         test: /\.stories\.jsx?$/,
-        use: require.resolve('@storybook/addon-notes/loader'),
-        include: [
-          path.resolve(__dirname, './stories'),
-          path.resolve(__dirname, '../../lib/ui/src'),
-          path.resolve(__dirname, '../../lib/components/src'),
-        ],
-        enforce: 'pre',
-      },
-      {
-        test: /\.stories\.jsx?$/,
         use: require.resolve('@storybook/addon-storysource/loader'),
         include: [
           path.resolve(__dirname, './stories'),
