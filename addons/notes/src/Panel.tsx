@@ -37,7 +37,13 @@ const PropTableConsumer = ({ id }: { id?: string }) => (
       const component = api.getParameters(id || currentId, 'component');
       return (
         <PropTableWrapper>
-          <PropTable type={PropTableWrapper} propDefinitions={component.propDefinitions} />
+          <PropTable
+            type={PropTableWrapper}
+            propDefinitions={component && component.propDefinitions}
+            maxPropObjectKeys={10}
+            maxPropArrayLength={10}
+            maxPropStringLength={10}
+          />
         </PropTableWrapper>
       );
     }}

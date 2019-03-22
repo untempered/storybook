@@ -34,7 +34,8 @@
     "markdown-to-jsx": "^6.9.3",
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
-    "util-deprecate": "^1.0.2"
+    "util-deprecate": "^1.0.2",
+    "vue-docgen-api": "^3.10.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.5.9",
