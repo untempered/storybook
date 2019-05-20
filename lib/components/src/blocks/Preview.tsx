@@ -31,13 +31,14 @@ const StyledSource = styled(Source)(({ theme }) => ({
   borderTopLeftRadius: 0,
   borderTopRightRadius: 0,
   border: 'none',
+  boxShadow: theme.base === 'dark' && 'none',
 
   background:
-    theme.base === 'light' ? 'rgba(0, 0, 0, 0.85)' : darken(0.05, theme.background.content),
+    theme.base === 'light' ? 'rgba(0, 0, 0, 0.80)' : darken(0.05, theme.background.content),
   color: theme.color.lightest,
   button: {
     background:
-      theme.base === 'light' ? 'rgba(0, 0, 0, 0.85)' : darken(0.05, theme.background.content),
+      theme.base === 'light' ? 'rgba(0, 0, 0, 0.80)' : darken(0.05, theme.background.content),
   },
 }));
 
