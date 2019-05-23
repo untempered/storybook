@@ -5,7 +5,7 @@ module.exports = async ({ config }) => {
     test: /\.stories\.js$/,
     use: [
       {
-        loader: require.resolve('@storybook/addon-storysource/loader'),
+        loader: require.resolve('@storybook/source-loader'),
         options: { injectParameters: true },
       },
     ],
