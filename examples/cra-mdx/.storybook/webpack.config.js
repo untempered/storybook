@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = async ({ config }) => {
   config.module.rules.push({
-    test: /\.stories\.js$/,
+    test: /\.stories\.[tj]sx?$/,
     use: [
       {
         loader: require.resolve('@storybook/source-loader'),
