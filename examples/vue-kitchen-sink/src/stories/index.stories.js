@@ -5,13 +5,21 @@ import Welcome from './Welcome.vue';
 import Button from './Button.vue';
 import App from '../App.vue';
 
-storiesOf('Welcome', module).add('Welcome', () => ({
-  render: h => h(Welcome, { props: { goToButton: linkTo('Button') } }),
-}));
+storiesOf('Welcome', module)
+  .addParameters({
+    component: Welcome,
+  })
+  .add('Welcome', () => ({
+    render: h => h(Welcome, { props: { goToButton: linkTo('Button') } }),
+  }));
 
-storiesOf('App', module).add('App', () => ({
-  render: h => h(App),
-}));
+storiesOf('App', module)
+  .addParameters({
+    component: App,
+  })
+  .add('App', () => ({
+    render: h => h(App),
+  }));
 
 storiesOf('Button', module)
   .addParameters({ component: Button })

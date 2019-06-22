@@ -1,6 +1,7 @@
 import React from 'react';
 import { load, addDecorator, addParameters } from '@storybook/react';
 import { Global, ThemeProvider, themes, createReset, convert } from '@storybook/theming';
+import { DocsPage } from '@storybook/addon-docs/blocks';
 
 import { withCssResources } from '@storybook/addon-cssresources';
 import { withA11y } from '@storybook/addon-a11y';
@@ -56,6 +57,7 @@ addParameters({
     { name: 'light', value: '#eeeeee' },
     { name: 'dark', value: '#222222' },
   ],
+  docs: DocsPage,
 });
 
 load(require.context('../../lib/ui/src', true, /\.stories\.js$/), module);
