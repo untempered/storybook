@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { linkTo } from '@storybook/addon-links';
 import { Welcome } from '@storybook/react/demo';
-import mdx from './welcome.stories.mdx';
+import mdx from './welcome.mdx';
 
 storiesOf('Classic|Welcome', module).add(
   'to Storybook',
