@@ -70,6 +70,9 @@ module.exports = {
     '/dll/',
     '/__mocks__ /',
   ],
+  globals: {
+    DOCS_MODE: false,
+  },
   snapshotSerializers: ['jest-emotion', 'enzyme-to-json/serializer'],
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['./scripts/jest.init.js'],

@@ -39,28 +39,29 @@ export interface TypesetProps {
   sampleText?: string;
 }
 
+/**
+ * Convenient tyleguide documentation showing examples of type
+ * with different sizes and weights and configurable sample text.
+ */
 export const Typeset: React.FunctionComponent<TypesetProps> = ({
   fontSizes,
   fontWeight,
   sampleText,
   ...props
-}) => {
-  const fontSizesReversed = fontSizes.reverse();
-  return (
-    <Wrapper {...props}>
-      {fontSizesReversed.map(num => (
-        <TypeSpecimen key={num}>
-          <Label>{num}px</Label>
-          <Sample
-            style={{
-              fontSize: num,
-              fontWeight,
-            }}
-          >
-            {sampleText || 'Was he a beast if music could move him so?'}
-          </Sample>
-        </TypeSpecimen>
-      ))}
-    </Wrapper>
-  );
-};
+}) => (
+  <Wrapper {...props}>
+    {fontSizes.map(num => (
+      <TypeSpecimen key={num}>
+        <Label>{num}px</Label>
+        <Sample
+          style={{
+            fontSize: num,
+            fontWeight,
+          }}
+        >
+          {sampleText || 'Was he a beast if music could move him so?'}
+        </Sample>
+      </TypeSpecimen>
+    ))}
+  </Wrapper>
+);
