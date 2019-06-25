@@ -1,4 +1,4 @@
-import { document } from 'global';
+import { document, window } from 'global';
 import pick from 'lodash/pick';
 
 import deprecate from 'util-deprecate';
@@ -128,6 +128,11 @@ const checkDeprecatedLayoutOptions = (options: Options) => {
   return {};
 };
 
+const userThemeIsDark = () => {
+  const isUserThemeDark = window.matchMedia('(prefers-color-scheme: dark)');
+  return isUserThemeDark.matches;
+};
+
 const initial: SubState = {
   ui: {
     enableShortcuts: true,
@@ -141,7 +146,7 @@ const initial: SubState = {
     panelPosition: 'bottom',
   },
   selectedPanel: undefined,
-  theme: themes.light,
+  theme: userThemeIsDark() ? themes.dark : themes.light,
 };
 
 export const focusableUIElements = {
